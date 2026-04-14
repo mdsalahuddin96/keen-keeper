@@ -15,8 +15,22 @@ const FriendCard = ({ friend }) => {
       <div className="card-body items-center text-center">
         <h2 className="text-[20px] font-semibold text-[#1f2937]">{name}</h2>
         <p className="text-[#64748B]">{days_since_contact}d ago</p>
-        <span className="bg-[#cbfadb] px-2 py-1.5 rounded-full text-[#244D3F] font-medium">{tags[0].toUpperCase()}</span>
-        <span className={`font-medium px-2 py-1.5 text-white rounded-full ${status==="On-track"?'bg-[#244D3F]':status==='Overdue'?'bg-[#ef4444]':'bg-[#efad44]'}`}>{status}</span>
+        <div className="flex gap-2 justify-center items-center">
+          {tags.map((tag, ind) => (
+            <span
+              key={ind}
+              className="bg-[#cbfadb] px-2 py-1.5 rounded-full text-[#244D3F] font-medium"
+            >
+              {tag.toUpperCase()}
+            </span>
+          ))}
+        </div>
+
+        <span
+          className={`font-medium px-2 py-1.5 text-white rounded-full ${status === "On-track" ? "bg-[#244D3F]" : status === "Overdue" ? "bg-[#ef4444]" : "bg-[#efad44]"}`}
+        >
+          {status}
+        </span>
       </div>
     </div>
   );

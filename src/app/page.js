@@ -1,15 +1,20 @@
+import Banner from "@/components/Banner";
 import FriendCard from "@/components/FriendCard";
 import Summary from "@/components/Summary";
 import { promises as fs } from "fs";
 import path from "path";
+
 export default async function Home() {
   const jsonPath = path.join(process.cwd(), "public", "friends.json");
   const file = await fs.readFile(jsonPath, "utf8");
   const friends = JSON.parse(file);
   return (
     <div className="container mx-auto">
+      {/* banner */}
+      <Banner />
+
       {/* Summary Section */}
-        <Summary friends={friends}></Summary>
+      <Summary friends={friends}></Summary>
 
       {/* Friends Section */}
       <div className="pt-10 border-t space-y-4 border-[#e9e9e9]">
