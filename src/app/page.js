@@ -2,6 +2,7 @@ import Banner from "@/components/Banner";
 import FriendCard from "@/components/FriendCard";
 import Summary from "@/components/Summary";
 import { promises as fs } from "fs";
+import Link from "next/link";
 import path from "path";
 
 export default async function Home() {
@@ -21,7 +22,9 @@ export default async function Home() {
         <h1 className="text-2xl text-[#1f2937]">Your Friends</h1>
         <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
           {friends.map((friend) => (
-            <FriendCard key={friend.id} friend={friend}></FriendCard>
+            <Link key={friend.id} href={`/friend/${friend.id}`}>
+              <FriendCard friend={friend}></FriendCard>
+            </Link>
           ))}
         </div>
       </div>
