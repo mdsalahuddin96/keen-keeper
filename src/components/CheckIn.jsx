@@ -1,26 +1,24 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { MdOutlineTextsms } from "react-icons/md";
 import { IoIosVideocam } from "react-icons/io";
 import { toast } from 'react-toastify';
+import { InteractionsContext } from '@/context/InteractionsContext';
 const CheckIn = ({selectedFriend}) => {
-    const [interactions,setInteractions]=useState([])
+    const {interactions,setInteractions}=useContext(InteractionsContext)
     const handleInteraction=(e)=>{
-        const currDate=new Date().toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            });
+        const currDate=new Date().toLocaleDateString("en-US", {month: "short",day: "numeric",year: "numeric",});
         const interaction=e.currentTarget.dataset.name;
         const newInteraction={
             name:selectedFriend.name,
             date:currDate,
-            interaction:interaction
+            interactionType:interaction
         }
         setInteractions([...interactions,newInteraction])
         toast.success(`${interaction} with ${selectedFriend.name}`)
     }
+    
     console.log(interactions)
     return (
         <div className='grid grid-cols-3 gap-4 mt-10'>

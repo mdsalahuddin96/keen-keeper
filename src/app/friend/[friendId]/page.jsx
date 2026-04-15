@@ -5,7 +5,7 @@ import { FiArchive } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import path from "path";
 import CheckIn from "@/components/CheckIn";
-const page = async ({ params }) => {
+const FriendDetailsPage = async ({ params }) => {
   const { friendId } = await params;
   const jsonPath = path.join(process.cwd(), "public", "friends.json");
   const file = await fs.readFile(jsonPath, "utf8");
@@ -25,9 +25,9 @@ const page = async ({ params }) => {
     email,
   } = selectedFriend;
   return (
-    <div className="container mx-auto p-20">
-      <div className="grid grid-cols-5 grid-rows-7 gap-4">
-        <div className="grid col-span-2 row-span-7 gap-4">
+    <div className="container mx-auto md:p-20">
+      <div className="grid lg:grid-cols-5 lg:grid-rows-7 gap-4 ">
+        <div className="lg:row-span-7 lg:col-span-2 space-y-4 ">
           <div className="row-span-4 ">
             <div className="flex flex-col justify-center items-center p-6 bg-base-100 border border-gray-200 rounded-lg">
               <Image
@@ -72,28 +72,35 @@ const page = async ({ params }) => {
           </div>
         </div>
 
-        <div className="row-span-2 flex flex-col justify-center items-center bg-white rounded-lg border border-gray-100">
-          <p className="text-3xl font-semibold text-[#244d3f]">
-            {days_since_contact}
-          </p>
-          <p className="text-lg text-[#64748B]">Days Since Contact</p>
-        </div>
-        <div className="row-span-2 flex flex-col justify-center items-center bg-white rounded-lg  border border-gray-100">
-          <p className="text-3xl font-semibold text-[#244d3f]">{goal}</p>
-          <p className="text-lg text-[#64748B]">Goal (Days)</p>
-        </div>
-        <div className="row-span-2 flex flex-col justify-center items-center bg-white rounded-lg  border border-gray-100">
-          <p className="text-3xl font-semibold text-[#244d3f]">
-            {`${new Date(next_due_date).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })}`}
-          </p>
-          <p className="text-lg text-[#64748B]">Next Due</p>
+        {/* summary */}
+
+        <div className="grid md:grid-cols-3 gap-4 md:row-span-2 md:col-span-3 ">
+          <div className=" py-4  flex flex-col justify-center items-center bg-white rounded-lg border border-gray-100">
+            <p className="text-3xl font-semibold text-[#244d3f]">
+              {days_since_contact}
+            </p>
+            <p className="text-lg text-[#64748B]">Days Since Contact</p>
+          </div>
+
+          <div className="py-4 flex flex-col justify-center items-center bg-white rounded-lg  border border-gray-100">
+            <p className="text-3xl font-semibold text-[#244d3f]">{goal}</p>
+            <p className="text-lg text-[#64748B]">Goal (Days)</p>
+          </div>
+
+          <div className=" py-4 flex flex-col justify-center items-center bg-white rounded-lg  border border-gray-100">
+            <p className="text-3xl font-semibold text-[#244d3f]">
+              {`${new Date(next_due_date).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}`}
+            </p>
+            <p className="text-lg text-[#64748B]">Next Due</p>
+          </div>
         </div>
 
-        <div className="col-span-3 row-span-2 flex justify-between bg-white rounded-lg p-4 border border-gray-100">
+        {/* Relationship Goal */}
+        <div className=" md:col-span-3 md:row-span-2 flex justify-between bg-white rounded-lg p-4 border border-gray-100">
           <div className="space-y-4">
             <p className="text-xl font-medium text-[#244d3f]">
               Relationship Goal
@@ -103,13 +110,17 @@ const page = async ({ params }) => {
           <button className="btn">Edit</button>
         </div>
 
-        <div className="col-span-3 row-span-3 bg-white rounded-lg p-4 border border-gray-100">
+        {/* Check In */}
+
+        <div className="md:col-span-3 md:row-span-3 bg-white rounded-lg p-4 border border-gray-100">
           <p className="text-xl font-medium text-[#244d3f]">Quick Check-In</p>
           <CheckIn selectedFriend={selectedFriend}></CheckIn>
         </div>
+
+
       </div>
     </div>
   );
 };
 
-export default page;
+export default FriendDetailsPage;
