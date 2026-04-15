@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import appsNotFound from "@/assets/images/App-Error.png";
+import appsNotFound from "@/assets/App-Error.png";
 const ErrorPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-300 px-4">
@@ -12,19 +12,19 @@ const ErrorPage = () => {
 
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-semibold my-4">
-          OPPS!! APP NOT FOUND
+          OPPS!! This Friend NOT FOUND
         </h2>
 
         {/* Description */}
         <p className="text-gray-500 mb-4">
-          The App you are requesting is not found on our system. please try
-          another apps
+          The Friend you are requesting is not found on our system. please try
+          another Friend Details.
         </p>
 
         {/* Button */}
         <Link
           href={"/"}
-          className="inline-block bg-linear-to-r from-[#632EE3] to-[#9F62F2] text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-100 transition duration-300"
+          className="inline-block bg-linear-to-r from-[#0c462b] to-[#4bc24b] text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-100 transition duration-300"
         >
           Go Back
         </Link>

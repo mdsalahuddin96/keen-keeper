@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const FriendCard = ({ friend }) => {
-  const { name, picture, days_since_contact, status, tags } = friend;
+  const { name, picture, days_since_contact, status, tags,bio,goal,next_due_date,email } = friend;
   return (
     <div className="flex flex-col justify-center items-center p-6 bg-base-100 border border-gray-200 rounded-lg">
       <Image
