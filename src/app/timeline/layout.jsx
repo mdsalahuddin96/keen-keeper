@@ -1,5 +1,8 @@
 import SortedButton from "@/components/SortedButton";
-
+export const metadata = {
+  title: 'Keen Keeper | Timeline',
+  description: 'All Interactions is here',
+}
 const TimelineLayout = ({children}) => {
   return (
     <div className="bg-[#f8fafc] p-8 md:px-60 md:py-20 ">

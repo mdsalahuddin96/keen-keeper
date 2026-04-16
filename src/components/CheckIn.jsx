@@ -8,7 +8,7 @@ import { InteractionsContext } from '@/context/InteractionsContext';
 const CheckIn = ({selectedFriend}) => {
     const {interactions,setInteractions}=useContext(InteractionsContext)
     const handleInteraction=(e)=>{
-        const currDate=new Date().toLocaleDateString("en-US", {month: "short",day: "numeric",year: "numeric",});
+        const currDate=new Date().toLocaleDateString("en-US", {weekday:'short', month: "short",day: "numeric",year: "numeric",});
         const interaction=e.currentTarget.dataset.name;
         const newInteraction={
             name:selectedFriend.name,

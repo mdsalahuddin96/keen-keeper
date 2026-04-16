@@ -8,6 +8,14 @@ export default function StatsPage() {
   let call = 0;
   let video = 0;
   const { interactions } = useContext(InteractionsContext);
+  if (interactions.length === 0) {
+    return (
+      <div className="mt-10 border border-[#e9e9e9] rounded-xl bg-white p-5">
+        <p className="font-semibold text-[#244d3f]">By Interaction Type</p>
+        <div className="text-[#64748B] text-center mt-4">No interactions logged yet.</div>
+      </div>
+    );
+  }
   for (let item of interactions) {
     if (item.interactionType === "Text") {
       text++;
@@ -22,11 +30,11 @@ export default function StatsPage() {
     { name: "Call", value: call, fill: "#00C49F" },
     { name: "Video", value: video, fill: "#FF8042" },
   ];
+
   return (
     <div className="mt-10 border border-[#e9e9e9] rounded-xl bg-white p-5">
-        <p className="">By Interaction Type</p>
+      <p className="font-semibold text-[#244d3f]">By Interaction Type</p>
       <div className="w-full h-150  flex justify-center items-center">
-        
         <ResponsiveContainer width="80%" height="60%">
           <PieChart>
             <Pie

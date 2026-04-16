@@ -5,6 +5,22 @@ import { FiArchive } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import path from "path";
 import CheckIn from "@/components/CheckIn";
+
+export async function generateMetadata({ params }) {
+  const { friendId } = await params;
+
+  const jsonPath = path.join(process.cwd(), "public", "friends.json");
+  const file = await fs.readFile(jsonPath, "utf8");
+  const friends = JSON.parse(file);
+  const selectedFriend = friends.find(
+    (friend) => friend.id === parseInt(friendId),
+  );
+  return {
+    title: selectedFriend.name,
+    description: selectedFriend.bio,
+  };
+}
+
 const FriendDetailsPage = async ({ params }) => {
   const { friendId } = await params;
   const jsonPath = path.join(process.cwd(), "public", "friends.json");
@@ -116,8 +132,6 @@ const FriendDetailsPage = async ({ params }) => {
           <p className="text-xl font-medium text-[#244d3f]">Quick Check-In</p>
           <CheckIn selectedFriend={selectedFriend}></CheckIn>
         </div>
-
-
       </div>
     </div>
   );
