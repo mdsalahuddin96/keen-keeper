@@ -18,8 +18,7 @@ const CheckIn = ({selectedFriend}) => {
         setInteractions([...interactions,newInteraction])
         toast.success(`${interaction} with ${selectedFriend.name}`)
     }
-    
-    console.log(interactions)
+
     return (
         <div className='grid grid-cols-3 gap-4 mt-10'>
             <div onClick={handleInteraction}  data-name="Call" className="flex flex-col justify-center items-center gap-1 cursor-pointer bg-[#f8fafc] rounded-lg p-8 border border-gray-100">

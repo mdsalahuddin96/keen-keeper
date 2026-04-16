@@ -1,40 +1,41 @@
-'use client'
-import { InteractionsContext } from "@/context/InteractionsContext";
+"use client";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import Link from "next/link";
-import React, { useContext } from "react";
+import { useContext } from "react";
+import { InteractionsContext } from "@/context/InteractionsContext";
+
 
 const SortedButton = () => {
-   const {interactions,setInteractions}=useContext(InteractionsContext)
-   const interactionArr=[...interactions]
-   const handleSort=(e)=>{
-    const sortby=e.target.dataset.name
-    if(sortby==="Call"){
-        const callData=interactionArr.filter(interaction=>interaction.interactionType===sortby)
-        console.log(callData, 'call data')
-    }
-    // else if(sortby==="Text"){
-    //   const callData=interactionArr.filter(interaction=>interaction.interactionType===sortby)
-    //     console.log(callData, 'call data')
-    // }
-   }
+  const {sortby,setSortBy}=useContext(InteractionsContext)
   return (
-    <div className="dropdown dropdown-start">
-      <div tabIndex={0} role="button" className="btn m-1">
-        Click ⬇️
+    <div className="dropdown dropdown-start my-6">
+      <div tabIndex={0} role="button" className="btn m-1 text-[#64748B]">
+        Filter Timeline {sortby} <RiArrowDropDownLine size={30} />
       </div>
       <ul
         tabIndex="-1"
         className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
       >
         <li>
-         <Link href={'/timeline/sortedbytext'}> <a onClick={handleSort} data-name='Call'>Text</a></Link>
+          <Link href={`/timeline/text`}> 
+            <button >Text</button>
+          </Link>
         </li>
 
         <li>
-          <Link href={'/timeline/sortedbycall'}><a onClick={handleSort} data-name='Text'>Call</a></Link>
+          <Link href={`/timeline/call`}>
+            <button>Call</button>
+          </Link>
         </li>
         <li>
-          <Link href={'/timeline/sortedbyvideo'}><a onClick={handleSort} data-name='Text'>Video</a></Link>
+          <Link href={`/timeline/video`}>
+            <button>Video</button>
+          </Link>
+        </li>
+        <li>
+          <Link href={"/timeline"}>
+            <button>All History</button>
+          </Link>
         </li>
       </ul>
     </div>
